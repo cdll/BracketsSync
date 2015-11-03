@@ -1,0 +1,12 @@
+{
+  "name": "brackets-parfait-extension",
+  "version": "0.1.0",
+  "dependencies": {
+    "fs-extra": "0.6.x",
+    "copy-paste": "0.1.0",
+    "http-proxy": "^1.1.4",
+    "send": "^0.3.0",
+    "through": "2.3.4",
+    "html-entities": "1.1.1"
+  }
+}

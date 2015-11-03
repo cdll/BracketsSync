@@ -1,0 +1,431 @@
+@bc-btn-triangle:           #878787;
+@bc-btn-border:             #b2b5b5;
+@bc-input-bg:               #fff;
+@bc-border-radius:          3px;
+@bc-bg-highlight:           #e0f0fa;
+@bc-text:                   #333;
+@bc-text-quiet:             #aaa;
+@bc-text-thin-quiet:        #777;
+
+@dark-bc-btn-triangle:      #aaa;
+@dark-bc-btn-border:        #202020;
+@dark-bc-input-bg:          #555;
+@dark-bc-bg-highlight:      #000;
+@dark-bc-text:              #ddd;
+@dark-bc-text-quiet:        #9a9a9a;
+
+@toolbar-bg-light:          #d4d7d7;
+@toolbar-bg-dark:           #222222;
+@toolbar-spacer-width:      42px;
+
+/* All selectors are descendents of #e4b-main-panel
+to constrain styles to this extension */
+#e4b-main-panel {
+    height: initial; // override 200px default
+}
+
+#e4b-main-panel .resizable-content {
+    height: 400px;  /* determines initial panel height */
+    display: flex;
+    flex-direction: column;
+}
+
+#e4b-main-panel .toolbar {
+    display: flex;
+    align-items: stretch;
+    padding: 0px;
+    height: auto;
+    overflow: initial;
+
+    button.copy-table, .filter {
+        float: right;
+        margin: -2px 10px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+
+    .title {
+        line-height: 34px;
+    }
+}
+
+.e4b-main-panel-buttons {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    color: @bc-text;
+
+    body.dark & {
+        color: @dark-bc-text;
+    }
+}
+
+.e4b-main-panel-buttons a {
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+/*
+ * add specificity to clobber .dark a rules
+ * workaround positioning from brackets.less .toolbar .close
+ */
+.e4b-main-panel-buttons .e4b-main-panel-close {
+    color: @bc-text;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 18px;
+    text-shadow: none;
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+    padding: 0 10px 0 8px;
+    line-height: 34px;
+
+    &:hover {
+        opacity: 1;
+        filter: alpha(opacity=100);
+    }
+    
+    body.dark & {
+        color: @dark-bc-text;
+    }
+}
+
+.e4b-eula-dialog {
+    .modal-body {
+        overflow-y: hidden;
+        display: flex;
+        flex-direction: column;
+        min-height: 400px;
+    
+        .dialog-message {
+            flex-shrink: 0;
+        }
+        
+        .dialog-notice-header {
+            font-size: 14px;
+        }
+        
+        .dialog-notice {
+            padding: 6px 8px;
+            border-radius: @bc-border-radius;
+            background: @bc-bg-highlight;
+            color: @bc-text;
+            font-size: 12px;
+            line-height: 18px;
+            margin-top: 10px;
+            
+            body.dark & {
+                background: @dark-bc-bg-highlight;
+                color: @dark-bc-text;
+            }
+        }
+
+        .content {
+            border-style: solid;
+            border-width: 1px;
+            border-color: @bc-btn-border;
+            border-radius: @bc-border-radius;
+            background: @bc-input-bg;
+            height: 100%;
+            padding: 8px;
+            overflow-y: auto;
+            flex-grow: 1;
+
+            body.dark & {
+                background: @dark-bc-input-bg;
+                border-color: @dark-bc-btn-border;
+            }
+        }
+    }
+}
+
+.e4b-settings-icon {
+    content: "";
+    width: 13px;
+    background: url("img/e4b-settings.svg") no-repeat;
+    background-clip: content-box;
+    background-origin: content-box;
+    background-position: 0px 0px;
+    height: 14px;
+    display: inline-block;
+    padding: 0px;
+
+    .e4b-main-panel-buttons & {
+        padding: 10px 7px 10px 8px;
+    }
+    
+    body.dark & {
+        background-position: 0px -14px;
+    }
+}
+
+#browse-files {
+    background-image: url("img/back.svg");
+    background-repeat: no-repeat;
+    width: 11px;
+    background-clip: content-box;
+    background-origin: content-box;    
+    position: relative;
+    margin: 11px 7px 11px 11px;
+    cursor: pointer;
+    
+    .dark & {
+        background-image: url("img/back-dark.svg");
+    }
+}
+
+#cc-logo {
+    background: url(img/cc-logo.svg) no-repeat;
+    background-clip: content-box;
+    background-origin: content-box;
+    width: 24px;
+    height: 34px;
+    padding: 5px 0 5px 12px;
+    margin-top: 6px;
+    position: absolute;
+    left: 0px;
+    
+    .dark & {
+        background-image: url(img/cc-logo-dark.svg);
+    }
+}
+
+.path-segment:not(:first-child)::before {
+    color: @bc-text-quiet;
+    content: "/";
+    display: inline-block;
+    margin-left: 9px;
+    margin-right: 8px;
+    margin-bottom: 1px;
+    
+    .dark & {
+        color: #666;
+     }
+ }
+
+.path-segment {
+    color: @bc-text-thin-quiet;
+    cursor: pointer;
+    
+    .dark & {
+        color: @dark-bc-text-quiet;
+    }
+}
+
+.path-segment:last-child {
+    color: @bc-text;
+    cursor: default; // using default cursor here because last path segment shouldn't be clickable
+    pointer-events: none; // this ensures that last path segment isn't clickable
+    
+    .dark & {
+        color: @dark-bc-text;
+    }
+}
+
+/**
+ *  Brackets Toolbar Icon Styling
+ */
+#toolbar-parfait {
+  background: url("img/extract-icon.svg") no-repeat 0px 0px;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+
+#toolbar-parfait.active {
+    background-position: 0 -48px;
+}
+
+#toolbar-parfait.disabled {
+  opacity: 0.4;
+}
+
+/**
+ * Other
+ */
+.e4b-layers-toggle-button {
+    background-image: url("img/sidebar-icon.svg");
+    background-position: 0px 0px;
+    width: 16px;
+    background-clip: content-box;
+    background-origin: content-box;
+    padding: 10px 7px 10px 5px;
+    
+    body.dark & {
+        background-image: url("img/sidebar-icon-dark.svg");
+    }
+}
+
+.e4b-layers-toggle-button.selected {
+    background-position: 0px -24px;
+}
+
+#measurementOverlay {
+    z-index: auto;
+}
+
+#al-refresh-button {
+    padding: 9px 0px;
+    margin: 0px 6px;
+    -webkit-background-clip: content;
+    -webkit-background-origin: content;
+    background-repeat: no-repeat;
+    -webkit-background-size: 17px 48px;
+    -moz-background-size: 17px 48px;
+    background-size: 17px 48px;
+    background-image: url("img/refresh-icon.svg");
+    background-position: 0px 0px;
+    min-width: 16px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    
+    .dark & {
+        background-position: 0 -32px;
+    }
+}
+
+#al-refresh-button.selected,
+#al-refresh-button.spinning {
+    background-position: 0 -17px;
+    -webkit-animation-name: rotate;
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -webkit-transform-origin: 50% 50%;
+}
+
+#al-refresh-button.spinning {
+    .dark & {
+        background-position: 0 -16px;
+    }
+}
+
+@-webkit-keyframes rotate {
+    from {
+        -webkit-transform: rotate(360deg);
+    }
+    to {
+        -webkit-transform: rotate(0deg);
+    }
+}
+
+// Get Started panel styles
+
+#get-started-panel.expanded {
+    justify-content: space-between;
+    height: auto;
+}
+#get-started-panel .expanded-section {
+    display: none;
+}
+#get-started-panel.expanded .expanded-section {
+    // Absolutely positioned so it floats over the PSD view instead of growing toolbar ht & pushing down PSD view.
+    // This outer div is 100% width to draw a solid bg across the full width. The inner .expanded-section-contents
+    // div is half-width to align precisely with the button-or-URL UI above it.
+    position: absolute;
+    left: 0;
+    background-color: @toolbar-bg-light;
+    .dark & {
+        background-color: @toolbar-bg-dark;
+    }
+    
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding: 4px 4px 4px @toolbar-spacer-width;
+    width: 100%;
+    
+    .centered-span {
+        opacity: 0;
+    }
+}
+#get-started-panel .expanded-section-contents {
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+#get-started-panel .expanded-btn-label {
+    display: none;
+}
+#get-started-panel.expanded .expanded-btn-label {
+    display: block;
+    font-size: 13px;
+    color: @bc-text-thin-quiet;
+    line-height: 18px;
+    margin: 0 0 9px;
+}
+#get-started-panel .centered-span {
+    display: inline-block;
+    padding: 8px 6px;
+    text-align: center;
+    margin-left: 0px;
+}
+#get-started-panel #firstrun-upload-psd {
+    width: 100%;
+    height: 24px;
+    margin: 6px 0px;
+    font-size: 13px;
+    line-height: 1;
+    font-weight: normal;
+}
+
+#get-started-panel .e4b-help-button{
+    display: inline-block;
+    cursor: pointer;
+    flex: none;
+    width: 13px;
+    height: 13px;
+    padding: 11px 0px;
+    margin-right: 6px;
+    background-clip: content-box;
+    background-origin: content-box;
+    background-repeat: no-repeat;
+    background-image: url("img/question-mark.svg");
+    background-position: 0px 0px;
+    
+    .dark & {
+        background-image: url("img/question-mark-dark.svg");
+    }
+
+    &.active {
+        background-position: 0px -23px;
+    }
+}
+#get-started-panel #section-get-started {
+    flex-direction: column;
+    flex-basis: 45%;
+    flex-grow: 0;
+    max-width: 300px;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    transition: 0.2s ease-out;
+    vertical-align: top;
+}
+.section.full {
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+}
+.section.full-column {
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
+}
+.section.half {
+    flex-basis: 50%;
+}
+.section.spacer {
+    padding-left: @toolbar-spacer-width;
+}
+.section.end {
+    justify-content: flex-end;
+}
+.section.no-wrap {
+    flex-wrap: nowrap;
+}

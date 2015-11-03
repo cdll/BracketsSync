@@ -1,0 +1,7 @@
+html {
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  background: #fff;
+  font-family: source-sans-pro, sans-serif !important;
+}

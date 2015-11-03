@@ -1,0 +1,26 @@
+<div class="projects_modal modal">
+    <div class="modal-header">
+        <h1 class="dialog-title brproj-file-submodule">
+            <span>Project Options</span>
+        </h1>
+    </div>
+    <div class="modal-body">
+        <h2 data-bind="text: project.folder"></h2>
+        <div data-bind="text: isFavorite()? 'FAVORITE PROJECT' : ''"></div>
+        <div class="modal-row">
+            <span class="modal-cell120">Custom name</span>
+            <input class="modal-cell420" type="text" data-bind="value: customName, valueUpdate: 'afterkeydown'"/>
+        </div>
+        <div class="modal-row">
+            <span class="modal-cell120">Custom image URL</span>
+            <input class="modal-cell420" type="text" data-bind="value: customImage, valueUpdate: 'afterkeydown'"/>
+        </div>
+    </div>
+    <div class="modal-body">
+        <i>Note: pressing ENTER will close this window.</i>
+    </div>
+    <div class="modal-footer">
+        <button class="dialog-button btn primary">Close</button>
+        <button class="dialog-button btn" data-bind="click: back">Back</button>
+    </div>
+</div>

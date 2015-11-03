@@ -1,0 +1,194 @@
+@bc-border-radius:              3px;
+@bc-info-popup-bg:              #005f8f;
+@bc-info-popup-btn:             #00334d;
+@bc-panel-separator:            #c3c6c5;
+@bc-shadow:                     rgba(0, 0, 0, 0.24);
+
+@dark-bc-panel-separator:       #343434;
+@dark-bc-shadow:                rgba(0, 0, 0, 0.24);
+
+/*
+ * First-launch callouts
+ */
+.e4b-firstlaunch-popup {
+    border-radius: @bc-border-radius;
+    background: @bc-info-popup-bg;
+    box-shadow: 0 0 20px @bc-shadow;
+
+    position: absolute;
+    padding: 9px 12px 9px 12px;
+    z-index: 100;
+
+    font-family: "SourceSansPro";
+    color: white;
+    line-height: 1.5;
+    
+    /* animated properties */
+    opacity: 1.0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    
+    body.dark & {
+        box-shadow: 0 0 20px @dark-bc-shadow;
+    }
+
+    strong {
+        color: #fff;
+    }
+}
+
+#psdl-firstlaunch-popup {
+    max-width: 250px;
+    right: 39px; /* top is set programmatically */
+}
+
+.tut-progress {
+    position: absolute;
+    right: 15px;
+
+    .arrowBelow & {
+        bottom: 18px;
+    }
+
+    .arrowAbove & {
+        bottom: 8px;
+    }
+}
+
+.tut-progress .circle {
+    display: inline-block;
+    background: url("img/circle.svg") no-repeat;
+    width: 10px;
+    height: 10px;
+
+    &.optional {
+        display: none;
+    }
+}
+
+.show-optional .tut-progress .circle.optional {
+    display: inline-block;
+}
+
+.tut-progress .circle.full {
+    background: url("img/full-circle.svg") no-repeat;
+}
+
+.e4b-firstlaunch-popup.animateOpen {
+    -webkit-transition: -webkit-transform 125ms;
+    transition: transform 125ms;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+.e4b-firstlaunch-popup.animateClose {
+    /* Make the animation use the GPU--especially important for retina. */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-transition: opacity 125ms ease-in, -webkit-transform 125ms;
+    transition: opacity 125ms ease-in, transform 125ms;
+    opacity: 0.0;
+}
+
+.e4b-firstlaunch-popup .btn.primary {
+    .dark &, & {
+        background: @bc-info-popup-btn;
+        border: 1px solid @bc-info-popup-btn !important;
+        margin: 7px 7px 4px 0;
+        box-shadow: none;
+        padding: 3px 8px;
+        font-size: 13px;
+    }
+}
+
+#psdl-firstlaunch-popup :after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 7px;
+    right: -12px;
+    border-left: 13px solid @bc-info-popup-bg;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
+
+/* .popover-message defined in brackets.less */
+.e4b.popover-message {
+    max-width: 250px;
+
+    /* override */
+    .text {
+        background-color: @bc-info-popup-bg;
+        color: white;
+        font-size: 12px;
+        padding: 10px 15px;
+        white-space: normal;
+    }
+
+    /* override */
+    .arrowAbove {
+        border-color: transparent transparent @bc-info-popup-bg transparent;
+    }
+
+    /* override */
+    .arrowBelow {
+        border-color: @bc-info-popup-bg transparent transparent transparent;
+    }
+
+    .editor-callout-message ol {
+        margin: 2px 0 2px 20px;
+    }
+
+    .dismiss-button, .next-button {
+        background: @bc-info-popup-btn;
+        border-radius: @bc-border-radius;
+        display: inline-block;
+        padding: 4px 7px;
+        margin: 7px 7px 4px 0;
+
+        color: white;
+        line-height: 1;
+        font-size: 11px;
+
+        cursor: pointer;
+    }
+}
+
+#login-call-to-action-callout {
+    max-width: 200px;
+    margin-top: 20px;
+
+    .call_to_action_header {
+        padding: 4px 0 10px 0;
+    }
+
+    .cclogo {
+        float: left;
+        background: url(img/cc-logo-large.svg) no-repeat;
+        width: 25px;
+        height: 18px;
+        margin: 10px 10px 10px 0;
+    }
+
+    .call_to_action_title {
+        height: 100%;
+        vertical-align: middle
+    }
+
+    button {
+        float: right;
+    }
+}
+
+#login-call-to-action-callout:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: -13px;
+    left: 10px;
+    border-bottom: 13px solid @bc-info-popup-bg;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+}

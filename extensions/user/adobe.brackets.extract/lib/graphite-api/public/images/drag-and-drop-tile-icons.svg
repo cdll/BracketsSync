@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2014 Adobe Systems Incorporated. All rights reserved. -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="460px" height="144px" 
+ x="0px" y="0px"
+	 viewBox="0 0 460 144" enable-background="new 0 0 460 144" xml:space="preserve">
+<polygon fill="#CDD2D2" points="97,59 108,59 108,74 122,74 122,59 133,59 115,38.5 "/>
+<rect x="96" y="31" fill="#CDD2D2" width="38" height="4"/>
+<polygon fill="#393A3A" points="327,59 338,59 338,74 352,74 352,59 363,59 345,38.5 "/>
+<rect x="326" y="31" fill="#393A3A" width="38" height="4"/>
+</svg>

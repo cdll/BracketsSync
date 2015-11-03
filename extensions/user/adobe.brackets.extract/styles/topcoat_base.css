@@ -1,0 +1,14 @@
+/* Subset of styles from /lib/graphite-api/public/css/topcoat_base.css */
+[class^="card-"],
+[class*=" card-"] {
+    position: relative;
+    display: inline-block;
+    width: 95%;
+    width: -webkit-calc(100% -  0.9375rem);
+    width: -moz-calc(100% -  0.9375rem);
+    width: -o-calc(100% -  0.9375rem);
+    width: calc(100% -  0.9375rem);
+    margin: 0;
+    font-size: 0.75rem;
+    line-height: 1.5em;
+}

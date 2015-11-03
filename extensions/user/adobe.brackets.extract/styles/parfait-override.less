@@ -1,0 +1,805 @@
+@bc-bg-highlight:               #e0f0fa;
+@bc-border-radius:              3px;
+@bc-border-radius-small:        2px;
+@bc-highlight:                  rgba(255, 255, 255, 0.12);
+@bc-menu-bg:                    #fff;
+@bc-menu-text:                  #000;
+@bc-panel-bg-alt:               #dfe2e2;
+@bc-panel-separator:            #c3c6c5;
+@bc-shadow-small:               rgba(0, 0, 0, 0.06);
+@bc-text:                       #333;
+@bc-text-quiet:                 #aaa;
+@bc-text-thin-quiet:            #777;
+
+@bc-btn-bg:                     #e5e9e9;
+@bc-btn-bg-down:                #d3d7d7;
+@bc-btn-border:                 #b2b5b5;
+@bc-btn-border-focused:         #2893ef;
+@bc-btn-border-focused-glow:    #94ceff;
+@bc-btn-triangle:               #878787;
+@bc-input-bg:                   #fff;
+@bc-primary-btn-border:         #1474bf;
+
+@dark-bc-bg-highlight:               #2a3b50;
+@dark-bc-highlight:                  rgba(255, 255, 255, 0.06);
+@dark-bc-menu-bg:                    #000;
+@dark-bc-menu-text:                  #fff;
+@dark-bc-panel-bg-alt:               #333;
+@dark-bc-panel-bg-card:              #2c2c2c;
+@dark-bc-panel-bg-promoted:          #222;
+@dark-bc-panel-separator:            #343434;
+@dark-bc-shadow-small:               rgba(0, 0, 0, 0.06);
+@dark-bc-text:                       #ccc;
+@dark-bc-text-alt:                   #fff;
+@dark-bc-text-quiet:                 #aaa;
+
+@dark-bc-btn-bg:                     #3f3f3f;
+@dark-bc-btn-bg-down:                #222;
+@dark-bc-btn-border:                 #202020;
+@dark-bc-btn-border-focused:         #2893ef;
+@dark-bc-btn-border-focused-glow:    transparent;
+@dark-bc-btn-triangle:               #aaa;
+@dark-bc-input-bg:                   #555;
+@dark-bc-primary-btn-border:         #202020;
+
+/* disable bootstrap style */
+#e4b-main-panel button {
+    border-radius: @bc-border-radius;
+}
+
+#e4b-main-panel input:focus {
+    outline: none;
+}
+
+#e4b-main-panel img {
+    max-width: initial;
+}
+
+#e4b-main-panel .popup {
+    border-radius: @bc-border-radius;
+}
+
+#results {
+    position: relative;
+    flex: 1;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* AssetListView requires this to be visible to enable upload */
+#draganddropmessage {
+    width: 1px;
+    height: 1px;
+}
+
+#gridContainer {
+    padding: 0;
+    flex: 1;
+    height: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    width: 100%;
+    overflow: auto;
+    position: relative;
+}
+
+.asset-list-title {
+    line-height: 48px;
+    min-height: 48px;
+    padding-left: 25px;
+}
+
+.asset-list-container {
+    top: 48px;
+}
+
+/* ThumbnailsView  --------------------------------------------------------- */
+
+.upload_files_here, .asset_list_view_error {
+    background-color: transparent;
+}
+
+.drag_drop_file_capture {
+    z-index: 10000;
+}
+
+.drag_drop_file_capture_frame,
+.upload_files_here_frame,
+.asset_list_view_error_frame {
+    border: none;
+}
+
+.drag_drop_file_guidance_text img,
+.upload_files_here_guidance_text img {
+    background: url(img/drag-and-drop-icons.svg) no-repeat;
+    box-sizing: border-box;
+    margin: 0 auto 15px;
+    width: 136px;
+    height: 119px;
+    padding-left: 136px; // this needs to be the same as width to replace <img> with background-image.
+}
+
+.upload_files_here_guidance_text img {
+    .dark & {
+        background: url(img/drag-and-drop-icons.svg) 136px 0;
+    }
+}
+
+/* drop zone or error message seen in empty folder views */
+.upload_files_here_guidance_text,
+.asset_list_view_error_text {
+    font-family: inherit;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.2em;
+    color: @bc-text-thin-quiet;
+    top: -80px;
+    
+    .dark & {
+         color: @dark-bc-text-quiet;
+    }
+}
+
+/* drop zone tile seen in populated folder views */
+.upload_tile_guidance_text {
+    color: @bc-text-quiet;
+    padding-top: 10px;
+    width: 180px;
+    
+    .dark & {
+         color: @dark-bc-text-quiet;
+    }
+}
+
+/* overlay seen during drag */
+.drag_drop_file_guidance_text {
+    font-family: inherit;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.2em;
+    color: #fff;
+    top: -80px;
+}
+
+.grid article.card-asset {
+    vertical-align: middle;
+    
+    h4 {
+        color: @bc-text;
+        
+        body.dark & {
+            color: @dark-bc-text;
+        }
+    }
+    
+    .image-wrapper {
+        body.dark & {
+            background: @dark-bc-panel-bg-promoted;
+        }
+    }
+    
+    .del-button {
+        body.dark & {
+            background: url(../lib/graphite-api/public/images/trash-icon.svg) no-repeat 0 -24px;
+        }
+    }
+    
+    .asset-uploading {
+        body.dark & {
+            background: #444;
+            color: @dark-bc-text-alt;
+        }
+    }
+    
+    .asset-processing {
+        body.dark & {
+            background: @dark-bc-bg-highlight;
+            color: @dark-bc-text-alt;
+        }
+    }
+}
+
+.grid article.card-asset .image-wrapper-progress #nextStep {
+    display: none;
+}
+
+.grid article.card-asset .image-wrapper-progress {
+    border: 1px solid #c6c8ca;
+    
+    .dark & {
+        border: 1px solid #292929;
+    }
+}
+
+.grid article.card-asset .image-wrapper-progress .progressbar-uploading {
+    .dark & {
+        background-color: #5f5f5f;
+    }
+}
+
+.grid article.card-asset .image-wrapper-progress #progressbar {
+    margin-top: -142px;
+}
+
+.grid article.card-asset .image-wrapper-progress #stepContainer {
+    line-height: 140px;
+}
+
+
+
+[class^="card-"], [class*=" card-"] {
+    background: @bc-panel-bg-alt;
+    
+    body.dark & {
+        background: @dark-bc-panel-bg-card;
+    }
+}
+
+/* PSDPreviewView  --------------------------------------------------------- */
+.extract-plugin {
+    background-color: transparent;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.extract-plugin > section {
+    position: relative;
+    display: flex;
+    flex: 1;
+}
+
+.psd-preview-view {
+    position: relative;
+    flex: 1;
+    overflow: auto;
+    padding: 15px 0;
+
+    /* override parfait positioning */
+    left: initial;
+    top: initial;
+    right: initial;
+    bottom: initial;
+}
+
+/* Convert fixed position to absolute */
+#workerProgress {
+    margin: -15px 0 0 0;
+    position: absolute;
+    top: calc(50% - 65px);
+    left: calc(50% - 117px);
+    z-index: 900;
+}
+
+#tempPreview {
+    top: 0px;
+    z-index: 800;
+}
+
+.psd-preview-view .preview-container {
+    padding: 0px;
+}
+
+.export-buttons, .layer-item.show-export .export-buttons, {
+    display: none;
+}
+
+#selection-overlay {
+    top: 0px;
+}
+
+#inspectStyleOverlay {
+    top: 0px;
+    z-index: 900;
+}
+
+#measurementOverlay {
+    top: 0px;
+}
+
+.summary-separator {
+    height: 1px;
+    background-color: @bc-panel-separator;
+    border: none;
+    
+    body.dark & {
+        background-color: @dark-bc-panel-separator;
+    }
+}
+
+/* DetailPanelView --------------------------------------------------------- */
+#detail-panel {
+    position: relative;
+    min-width: 260px;
+    max-width: 260px;
+    height: initial;
+    overflow: auto;
+    order: 2;
+    background: #dadddd;
+    padding: 0px;
+    
+    body.dark & {
+        background: @dark-bc-panel-bg-alt;
+    }
+}
+
+#detail-panel .upload-button {
+    display: none;
+}
+
+#detail-panel > nav {
+    display: none;
+}
+
+/* HACK hide the "Styles" and "Extracted Assets" tab */
+#psdInfoSection, #psdAssetsSection {
+    display: none;
+}
+
+/* HACK force show the "Layers" */
+#psdInspectSection {
+    height: 100%;
+    top: 0;
+    background: transparent;
+    padding-left: 10px;
+    display: block;
+    position: initial;
+
+    .section-wrapper {
+        margin-top: 0;
+    }
+}
+
+.visible-button {
+    background: url("../lib/graphite-api/public/js/ccweb.files.extract/images/cc-extract-sprite.svg") no-repeat 0 -140px;
+    left: 9px;
+}
+
+.layers-list {
+    overflow: visible;
+}
+
+.layer-group-item .folder {
+    position: relative;
+    display: block;
+    float: left;
+    margin-right: 6px;
+    vertical-align: middle;
+    background-image: url("../lib/graphite-api/public/js/ccweb.files.extract/images/cc-extract-sprite.svg");
+    background-repeat: no-repeat;
+    background-position: 0 -120px;
+    width: 20px;
+    height: 20px;
+    margin-top: 7px;
+    opacity: 0.5; 
+}
+
+.layer-group-item.closed .folder {
+    background-image: url("../lib/graphite-api/public/js/ccweb.files.extract/images/cc-extract-sprite.svg");
+    background-repeat: no-repeat;
+    background-position: 0 -100px;
+    width: 20px;
+    height: 20px; 
+}
+
+.layer-group-item .image-wrapper,
+.layer-item .image-wrapper {
+    border: 1px solid @bc-panel-separator;
+    background-color: @bc-menu-bg;
+    
+    body.dark & {
+        border: 1px solid @dark-bc-btn-border;
+        background-color: @dark-bc-btn-bg-down;
+    }
+}
+
+.layer-item .image-wrapper {
+    background-image: url("../lib/graphite-api/public/js/ccweb.files.extract/images/checker.png");
+}
+
+.xOffsetIcon,
+.yOffsetIcon {
+    background: url(../lib/graphite-api/public/js/ccweb.files.extract/images/measurement-arrows.png) no-repeat;
+}
+
+.xOffsetIcon {
+    background-position: 0 3px;
+}
+
+.yOffsetIcon {
+    background-position: 0 -12px;
+}
+
+.export-buttons {
+    display: none;
+}
+
+.layer-group-label,
+.layer-label {
+    color: @bc-text !important;
+    text-shadow: none;
+    margin: 0;
+    
+    body.dark & {
+        color: @dark-bc-text !important;
+    }
+}
+
+.layer-item-row.selected > .layer-item > .layer-bg,
+.layer-item-row.selected > .layer-group-item > .layer-group-header > .layer-bg {
+    background: @bc-bg-highlight !important;
+    
+    body.dark & {
+        background: @dark-bc-bg-highlight !important;
+    }
+}
+
+.visible-button {
+    margin-left: 1px;
+    margin-top: 9px;
+    width: 20px;
+    height: 20px;
+    opacity: 1;
+    
+    .dark & {
+        opacity: 0.4;
+    }
+}
+
+.visible-button.off-state {
+    .dark & {
+        opacity: 0.15;
+    }
+}
+
+.visible-button:hover {
+    background-color: transparent;
+}
+
+#resetLayers {
+    background: @bc-btn-bg;
+    border: 1px solid @bc-btn-border;
+    box-shadow: inset 0 1px 0 @bc-highlight;
+    color: @bc-text;
+    text-shadow: none;
+    padding: 3px 10px;
+    
+    body.dark & {
+        background: @dark-bc-btn-bg;
+        border: 1px solid @dark-bc-btn-border;
+        box-shadow: inset 0 1px 0 @dark-bc-highlight;
+        color: @dark-bc-text;
+    }
+}
+
+#resetLayers:active {
+    background: @bc-btn-bg-down;
+    box-shadow: inset 0 1px 0 @bc-shadow-small;
+    
+    body.dark & {
+        background: @dark-bc-btn-bg-down;
+        box-shadow: inset 0 1px 0 @dark-bc-shadow-small;
+    }
+}
+
+.children-list-list > div > .layer-group-item,
+.children-list-list > div > .layer-item {
+    margin: 0 0 0 26px;   
+}
+
+.CodeMirror-linkedmode-range {
+    border: solid 1px #09F;
+    box-shadow: 0 0 2px #09F;
+    margin: -1px;
+    border-radius: @bc-border-radius-small;
+}
+
+.CodeMirror-linkedmode-empty {
+    border-right: solid 1px #888;
+}
+
+.sprite_preview {
+    background: url("../lib/graphite-api/public/js/ccweb.files.extract/images/light_checker_bg.png");
+    background-size: 9%;
+}
+
+.centeredWaitImg {
+    position: absolute;
+}
+
+/* suppress MesaurementPopupView copy text/css UI */
+.measurementElementAssetExtract {
+    display: none !important;
+}
+
+.measurementElementInfoPos {
+    border-style: none none none solid;
+}
+
+/* Move warning icon to bottom right for all layer types */
+.layer-group-item .image-wrapper div.preview-warning,
+.layer-item .image-wrapper div.preview-warning {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: initial;
+    left: initial;
+}
+
+.text-layer-icon {
+    width: 100%;
+    height: 100%;
+    font-size: 30px;
+    text-align: center;
+    line-height: 1;
+    font-family: serif;
+}
+
+/*
+ * Hide the canvas so that (1) the "T" appears and (2) the LayerThumbPopupView
+ * can reuse the canvas in the popup.
+ */
+.preview.text-layer {
+    visibility: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* HACK: Disable "Copy CSS" */
+#copyCSSLink {
+    display: none;
+}
+.measurementElementCopyControls br {
+    display: none;
+}
+/* HACK: end */
+
+/* Hide "Copy Text" when disabled */
+#copyTextLink.disabled {
+    display: none;
+}
+
+/* SelectionBarView -------------------------------------------------------- */
+.selection-controlbar .file-dim {
+    color: @bc-text-thin-quiet;
+    margin: 0 0 0 8px;
+    
+    body.dark & {
+        color: @dark-bc-text-quiet;
+    }
+}
+
+/* LayerCompView */
+.layer-comp-select:after {
+    margin-top: -4px;
+}
+
+.layerCompIndexLabel {
+    top: 0px;
+}
+
+.layer-comp-select {
+    background-color: @bc-btn-bg;
+    border: 1px solid @bc-btn-border;
+    border-radius: @bc-border-radius;
+    box-shadow: @bc-highlight 0px 1px 0px 0px inset;
+    color: @bc-text;
+    margin-top: -1px;
+    
+    body.dark & {
+        background-image: url(img/layer_comp_small_icon_dark.svg);
+        background-color: @dark-bc-btn-bg;
+        border: 1px solid @dark-bc-btn-border;
+        box-shadow: @dark-bc-highlight 0px 1px 0px 0px inset;
+        color: @dark-bc-text;
+    }
+}
+
+.layer-comp-select:active {
+    background-color: @bc-btn-bg-down;
+    box-shadow: @bc-shadow-small 0px 1px 0px 0px inset;
+    
+    body.dark & {
+        background-color: @dark-bc-btn-bg-down;
+        box-shadow: @dark-bc-shadow-small 0px 1px 0px 0px inset;
+    }
+}
+
+.layer-comp-select .label {
+    background: transparent;
+    font-weight: 400;
+    padding: 0;
+    text-shadow: none;
+    position: relative;
+    top: -1px;
+}
+
+.layer-comp-select .layerCompDropdownItem li a {
+    border: none;
+    color: @bc-menu-text;
+    
+    body.dark & {
+        color: @dark-bc-menu-text;
+    }
+}
+
+.layer-comp-select.active .layerCompDropdownItem {
+    background: @bc-menu-bg;
+    
+    body.dark & {
+        background: @dark-bc-menu-bg;
+    }
+}
+
+.layer-comp-select.active .layerCompDropdownItem {
+    top: -2px;
+}
+
+.layer-comp-select.active ul:first-of-type {
+    border-radius: @bc-border-radius @bc-border-radius 0 0;
+}
+
+.layer-comp-select.active ul:last-of-type {
+    border-radius: 0 0 @bc-border-radius @bc-border-radius;
+}
+
+.layer-comp-select .layerCompDropdownItem li:hover a {
+    background: @bc-bg-highlight;
+    color: @bc-menu-text;
+    
+    body.dark & {
+        background: @dark-bc-bg-highlight;
+        color: @dark-bc-menu-text;
+    }
+}
+
+.selection-controlbar {
+    display: flex;
+    flex-direction: row-reverse;
+    position: initial;
+}
+
+/* Fix vertical alignment of LayerCompView and ZoomView */
+.selection-controlbar div.layer-comp-controls,
+.selection-controlbar div.zoom-controls {
+    position: relative;
+    top: initial;
+    margin: auto;
+    color: @bc-menu-text;
+    
+    body.dark & {
+        color: @dark-bc-menu-text;
+    }
+}
+
+.header-separator {
+    display: none;
+}
+
+/* Hide parfait user guides */
+.selection-controlbar .firstuser-shortcut-guide,
+.selection-controlbar .keyboard-shortcut-guide {
+    display: none !important;
+}
+
+/* ZoomView ---------------------------------------------------------------- */
+.selection-controlbar .zoom-controls {
+    height: 21px;
+}
+
+.selection-controlbar .zoom-input,
+.selection-controlbar .zoom-fit-button,
+.selection-controlbar .zoom-100-button {
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 4px;
+}
+
+.selection-controlbar .zoom-input {
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    height: 18px;
+    margin-right: 12px;
+}
+
+.zoom-controls > div {
+    border-radius: @bc-border-radius;
+    margin-right: 5px;
+}
+
+.zoom-controls > .btn-quiet:hover {
+    background-color: @bc-highlight;
+    
+    body.dark & {
+        background-color: @dark-bc-highlight;
+    }
+}
+
+.zoom-controls > .btn-quiet:active {
+    background-color: rgba(0, 0, 0, 0.12);
+}
+
+.zoom-input[contenteditable=true] {
+    -webkit-user-select: text;
+    text-overflow: clip;
+    background: @bc-input-bg;
+    border: 1px solid @bc-btn-border-focused;
+    box-shadow: inset 0 1px 0 @bc-shadow-small, 0 0 0 1px @bc-btn-border-focused-glow;
+    max-width: 137px;
+    min-width: 1em;
+    width: auto;
+    outline: none;
+    
+    body.dark & {
+        background: @dark-bc-input-bg;
+        border: 1px solid @dark-bc-btn-border-focused;
+        box-shadow: inset 0 1px 0 @dark-bc-shadow-small, 0 0 0 1px @dark-bc-btn-border-focused-glow;
+    }
+}
+
+.psd-preview-view .spinner {
+    background-image: url("../lib/graphite-api/public/js/ccweb.files.extract/images/files-item-spinner.gif");
+}
+
+/* fix position from parfait, fix clobbered style from brackets */
+.preview-loading-spinner.spinner {
+    display: block;
+    position: absolute;
+    margin: -15px auto 0 auto;
+    visibility: visible;
+
+    border: none;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* remove brackets "[]" spinner styles */
+.preview-loading-spinner.spinner:before, .preview-loading-spinner.spinner:after {
+    border: none;
+}
+
+/* disable topcoat width style */
+#e4b-main-panel .tabs > section {
+    width: initial;
+    overflow: visible;
+}
+
+#detail-panel.tabs > section {
+    background-color: transparent;
+    position: relative;
+}
+
+/* restore .selection style for CSS inline editor rule list */
+.related-container .selection {
+    outline: none;
+    -webkit-transform: initial;
+    transform: initial;
+}
+
+#psdpreview_root {
+  background: url("../lib/graphite-api/public/js/ccweb.files.extract/images/light_checker_bg.png");
+}
+
+.derived-asset-list-item .image-wrapper {
+    background-image: url("../lib/graphite-api/public/js/ccweb.files.extract/images/checker.png");
+}
+
+/* override CSS rule that causes panel content to disappear at small sizes - #522 */
+@media only screen and (max-width: 800px) {
+  .psd-header,
+  .psd-preview-view,
+  #detail-panel,
+  .selection-controlbar {
+    display: block; }
+
+  .mobile-centered-container {
+    display: none; 
+  } 
+}
+
+/* PreferencesDialog ------------------------------------------------------- */
+.e4b-preferences-dialog .modal-footer a {
+    padding: 5px;
+}

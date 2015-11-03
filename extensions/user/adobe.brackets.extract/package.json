@@ -1,0 +1,47 @@
+{
+  "name": "adobe.brackets.extract",
+  "title": "Extract for Brackets (Preview)",
+  "homepage": "http://www.adobe.com/go/e4b_help",
+  "author": "Adobe",
+  "version": "0.8.0-1749-release",
+  "keywords": [
+    "PSDLens",
+    "Extract",
+    "Adobe"
+  ],
+  "engines": {
+    "brackets": ">=1.1"
+  },
+  "description": "Preview of Extract functionality inside Brackets. Extract design information and assets from a design comp via contextual code hints for CSS.",
+  "i18n": [
+    "en",
+    "fr",
+    "ja"
+  ],
+  "package-i18n": {
+    "fr": {
+      "title": "Extract for Brackets (Preview)",
+      "description": "Présentation privée de la fonctionnalité Extract dans Brackets. Celle-ci permet notamment d’extraire les informations de conception et les actifs d’une composition grâce aux indicateurs de code contextuels pour CSS."
+    },
+    "ja": {
+      "title": "Extract for Brackets (Preview)",
+      "description": "Brackets 内の Extract 機能のプライベートプレビュー。CSS の状況に応じたコードヒントを通じてデザインカンプからデザイン情報と アセットを抽出します。"
+    }
+  },
+  "devDependencies": {
+    "grunt": "0.4.1",
+    "grunt-cli": "0.1.9",
+    "grunt-contrib-jshint": "0.6.0",
+    "grunt-contrib-clean": "0.4.1",
+    "grunt-contrib-copy": "0.4.1",
+    "grunt-contrib-requirejs": "0.4.1",
+    "load-grunt-tasks": "0.2.0",
+    "grunt-contrib-compress": "0.8.0",
+    "jshint": "2.1.4",
+    "grunt-gitinfo": "0.1.6",
+    "lodash": "2.4.1"
+  },
+  "scripts": {
+    "install": "bash -c 'cd lib/graphite-api; npm install; grunt sass; stylus public/css public/js/ccweb.files.extract/css'"
+  }
+}

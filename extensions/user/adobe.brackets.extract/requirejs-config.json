@@ -1,0 +1,130 @@
+{
+    "paths": {
+        "ccweb.files.extract": "lib/graphite-api/public/js/ccweb.files.extract",
+
+        "jquery": "jquery-brackets",
+        "mpAjax": "lib/graphite-api/public/js/libs/jquery/jquery.mxhr",        
+        "underscore": "lib/graphite-api/public/js/libs/underscore/underscore-min",
+        "backbone": "lib/graphite-api/public/js/libs/backbone/backbone-min",
+        "zeroclipboard": "lib/graphite-api/public/js/libs/ZeroClipboard.min",
+        "text": "lib/graphite-api/public/js/libs/require/text",
+        "i18n": "lib/i18n/i18n",
+        "modernizr": "lib/graphite-api/public/js/libs/modernizr",
+        "translate": "lib/graphite-api/public/js/libs/translate",
+        "mixpanel": "lib/mixpanel-2.2",
+        "adobeid": "ims/adobeid",
+
+        "app": "lib/graphite-api/public/js/app",
+        "cceco": "lib/graphite-api/public/js/cceco",
+        "collections": "lib/graphite-api/public/js/collections",
+        "config": "lib/graphite-api/public/js/config",
+        "controllers": "lib/graphite-api/public/js/controllers",
+        "models": "lib/graphite-api/public/js/models",
+        "routes": "lib/graphite-api/public/js/routes",
+        "utils": "lib/graphite-api/public/js/utils",
+        "views": "lib/graphite-api/public/js/views",
+
+        "config-json": "config/config-prod-testing.json",
+
+        "override": ".",
+        "ext": ".",
+        "plugin-dependencies": "pluginshim/plugin-dependencies",
+        "plugin-components": "lib/graphite-api/public/js/libs/pluginshim"
+    },
+
+    "shim": {
+        "underscore": {
+            "exports": "_"
+        },
+        "backbone": {
+            "deps": ["underscore", "jquery"],
+            "exports": "Backbone"
+        },
+        "modernizr": {
+            "exports": "Modernizr"
+        },
+        "mixpanel": {
+            "deps": ["mixpanel-brackets"],
+            "exports": "mixpanel"
+        }
+    },
+    
+    "map": {
+        "*": {
+            "css": "lib/graphite-api/public/js/libs/require/css/css",
+            "routes/appRouter": "override/routes/BracketsAppRouter",
+            "serverAPI": "override/BracketsServerAPI",
+            "ccweb.files.extract/serverAPI": "override/BracketsServerAPI",
+            "cceco/ImageServiceAPI": "override/cceco/BracketsImageServiceAPI",
+            "config/environment": "override/config/environment",
+            "models/AuthModel": "override/models/BracketsAuthModel",
+            "utils/TemplateUtil": "override/utils/TemplateUtil",
+            "ext/utils/CSSParser": "override/utils/CSSParser",
+            "ext/utils/CSSModeSupport": "override/utils/CSSModeSupport",
+            "views/landing/AssetListView": "override/views/landing/BracketsAssetListView",            
+            "ccweb.files.extract/controllers/AssetController": "controllers/AssetController",
+            "ccweb.files.extract/controllers/DetailsController": "controllers/DetailsController",
+            "ccweb.files.extract/models/PluginAuthModel": "override/models/BracketsAuthModel",
+            "ccweb.files.extract/models/PluginConfigModel": "models/ConfigModel",
+            "ccweb.files.extract/models/MetricsProxyModel": "override/models/BracketsMetricsProxyModel",
+            "ccweb.files.extract/views/templates/layerListItemTemplate.html": "override/views/templates/layerListItemTemplate.html",
+            "ccweb.files.extract/views/templates/zoomControlsTemplate.html": "override/views/templates/zoomControlsTemplate.html",
+            "ccweb.files.extract/views/detail/PSDDetailsView": "override/views/detail/BracketsPSDDetailsView",
+            "ccweb.files.extract/views/detail/DetailPanelView": "override/views/detail/BracketsDetailPanelView",
+            "ccweb.files.extract/views/detail/ZoomView": "override/views/detail/BracketsZoomView",
+            "ccweb.files.extract/views/inspect/PSDInspectView": "override/views/inspect/BracketsPSDInspectView",
+            "ccweb.files.extract/views/layers/LayersListView": "override/views/layers/BracketsLayersListView",
+            "ccweb.files.extract/views/layers/LayerItemView": "override/views/layers/BracketsLayerItemView",
+            "ccweb.files.extract/views/layers/LayersListItemView": "override/views/layers/BracketsLayersListItemView",
+            "ccweb.files.extract/views/preview/PSDPreviewView": "override/views/preview/BracketsPSDPreviewView",
+            "ccweb.files.extract/views/popup/BasePopupView": "override/views/popup/BracketsBasePopupView",
+            "ccweb.files.extract/external/ZeroClipboard/ZeroClipboard": "override/BracketsClipboard",
+            "ccweb.files.extract/css/topcoat.css": "override/styles/topcoat.css" 
+        },
+        "override/BracketsServerAPI": {
+            "serverAPI": "lib/graphite-api/public/js/serverAPI"
+        },
+        "override/cceco/BracketsImageServiceAPI": {
+            "cceco/ImageServiceAPI": "cceco/ImageServiceAPI"        
+        },
+        "override/controllers/BracketsUploadController" : {
+            "controllers/UploadController" : "controllers/UploadController"
+        },
+        "override/models/BracketsAuthModel" : {
+            "models/AuthModel": "models/AuthModel"
+        },
+        "override/models/BracketsMetricsProxyModel" : {
+            "ccweb.files.extract/models/MetricsProxyModel": "ccweb.files.extract/models/MetricsProxyModel"
+        },
+        "override/views/landing/BracketsAssetListView" : {
+            "views/landing/AssetListView": "views/landing/AssetListView"
+        },        
+        "override/views/detail/BracketsPSDDetailsView" : {
+            "ccweb.files.extract/views/detail/PSDDetailsView": "ccweb.files.extract/views/detail/PSDDetailsView"
+        },
+        "override/views/detail/BracketsDetailPanelView" : {
+            "ccweb.files.extract/views/detail/DetailPanelView": "ccweb.files.extract/views/detail/DetailPanelView"
+        },        
+        "override/views/inspect/BracketsPSDInspectView" : {
+            "ccweb.files.extract/views/inspect/PSDInspectView" : "ccweb.files.extract/views/inspect/PSDInspectView"
+        },
+        "override/views/layers/BracketsLayersListView" : {
+            "ccweb.files.extract/views/layers/LayersListView": "ccweb.files.extract/views/layers/LayersListView"
+        },
+        "override/views/layers/BracketsLayerItemView" : {
+            "ccweb.files.extract/views/layers/LayerItemView": "ccweb.files.extract/views/layers/LayerItemView"
+        },
+        "override/views/layers/BracketsLayersListItemView" : {
+            "ccweb.files.extract/views/layers/LayersListItemView": "ccweb.files.extract/views/layers/LayersListItemView"
+        },
+        "override/views/preview/BracketsPSDPreviewView" : {
+            "ccweb.files.extract/views/preview/PSDPreviewView": "ccweb.files.extract/views/preview/PSDPreviewView"
+        },
+        "override/views/popup/BracketsBasePopupView" : {
+            "ccweb.files.extract/views/popup/BasePopupView": "ccweb.files.extract/views/popup/BasePopupView"
+        },
+        "models/MetricsProxyModel": {
+            "ccweb.files.extract/controllers/SelectionController": "ccweb.files.extract/controllers/SelectionController"
+        }
+    }
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2014 Adobe Systems Incorporated. All rights reserved. -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="drag-and-drop-icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	 x="0px" y="0px" width="374px" height="119px" viewBox="0 0 374 119" enable-background="0 0 374 119" xml:space="preserve">
+<path fill="none" stroke="#CDD2D2" stroke-width="2" stroke-dasharray="12,4" d="M132.2,2H5.2c-1.7,0-3,1.3-3,3v109c0,1.7,1.3,3,3,3
+	h127c1.7,0,3-1.3,3-3V5C135.2,3.3,133.9,2,132.2,2z"/>
+<polygon fill="#CDD2D2" points="52.2,65 63.2,65 63.2,80 76.2,80 76.2,65 87.2,65 69.7,44.5 "/>
+<rect x="50.2" y="37" fill="#CDD2D2" width="39" height="4"/>
+<path fill="none" stroke="#393A3A" stroke-width="2" stroke-dasharray="12,4" d="M369.2,2h-127c-1.7,0-3,1.3-3,3v109
+	c0,1.7,1.3,3,3,3h127c1.7,0,3-1.3,3-3V5C372.2,3.3,370.9,2,369.2,2z"/>
+<polygon fill="#393A3A" points="289.2,65 300.2,65 300.2,80 313.2,80 313.2,65 324.2,65 306.7,44.5 "/>
+<rect x="287.2" y="37" fill="#393A3A" width="39" height="4"/>
+</svg>
