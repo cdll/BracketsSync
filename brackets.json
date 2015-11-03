@@ -54,5 +54,6 @@
     "acb-bootstrap-snippets.enabled": true,
     "brackets-indent-guides.enabled": true,
     "brackets-icons.iconset": "ionicons",
-    "styleActiveLine": true
+    "styleActiveLine": true,
+    "themes.theme": "easy-dark"
 }
