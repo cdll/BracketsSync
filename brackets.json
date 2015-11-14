@@ -55,5 +55,11 @@
     "brackets-indent-guides.enabled": true,
     "brackets-icons.iconset": "ionicons",
     "styleActiveLine": true,
-    "themes.theme": "easy-dark"
+    "themes.theme": "easy-dark",
+    "brackets-file-tree-exclude.excludeList": [
+        "/.git/",
+        "/dist/",
+        "/bower_components/",
+        "/node_modules/"
+    ]
 }
