@@ -46,7 +46,8 @@
     "brackets-git.debugMode": false,
     "dnbard.projects.favorites": [],
     "dnbard.projects.filter": [
-        "favorite"
+        "favorite",
+        "regular"
     ],
     "dnbard.projects.customs": [],
     "markdown-preview.useGFM": true,
@@ -55,5 +56,11 @@
     "brackets-indent-guides.enabled": true,
     "brackets-icons.iconset": "ionicons",
     "styleActiveLine": true,
-    "themes.theme": "easy-dark"
+    "themes.theme": "easy-dark",
+    "brackets-icons.secondary": true,
+    "useTabChar": true,
+    "denniskehrig.ShowWhitespace.checked": true,
+    "mikaeljorhult.bracketsTodo.enabled": false,
+    "wordWrap": false,
+    "linting.collapsed": false
 }

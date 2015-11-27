@@ -24,6 +24,10 @@ A collection of [Bootstrap](http://getbootstrap.com/) snippets for [Brackets](ht
 2. Starting typing "bs3" you'll see the snippets list (code hint provider), just pick a snippet and press ENTER, or   
 3. Enter a snippet and hit the **Tab** key (Alternatively you can also hit the key **DOWN**).
 
+## More extensions?
+
+http://brackets.dnbard.com/author/Antonio%20Carlos%20Barbosa
+
 ## Snippets list
 
 ### Bootstrap 3 - Minimum Template
@@ -104,10 +108,38 @@ A collection of [Bootstrap](http://getbootstrap.com/) snippets for [Brackets](ht
 
 ### CDN
 
-	bs3cdn
-	bs3cdnjs
-	bs3cdncss
-	bs3cdnmodernizr
+    bs3cdn
+    bs3cdnanimatecss
+    bs3cdnanimationscss
+    bs3cdnanimationsjs
+    bs3cdnappearjs
+    bs3cdnbackbonejs
+    bs3cdncss
+    bs3cdncsvimportjs
+    bs3cdndatatablecss
+    bs3cdndatatablejs
+    bs3cdneasingjs
+    bs3cdnfancyboxcss
+    bs3cdnfancyboxjs
+    bs3cdnfontawesomecss
+    bs3cdnfoodcart
+    bs3cdnioniconscss
+    bs3cdnisotopejs
+    bs3cdnjasnycss
+    bs3cdnjasnyjs
+    bs3cdnjs
+    bs3cdnmodernizr
+    bs3cdnpagecurlcss
+    bs3cdnsmoothscrolljs
+    bs3cdnstylebluecss
+    bs3cdnstylegreencss
+    bs3cdnstyleredcss
+    bs3cdnstylesolidblackcss
+    bs3cdnstylesolidredcss
+    bs3cdnstyleyellowcss
+    bs3cdnvegascss
+    bs3cdnvegasjs
+    bs3cdnwowjs
 
 ### Clearfix
 
@@ -607,11 +639,129 @@ A collection of [Bootstrap](http://getbootstrap.com/) snippets for [Brackets](ht
     bs3bootswatchunited
     bs3bootswatchyeti
 
+### Bootstrap 3 Media Queries - Mobile First Method
+
+    bs3mqfmdesktops
+    bs3mqfmextrasmalldevices
+    bs3mqfmiphoneretina
+    bs3mqfmlargedevices
+    bs3mqfmmediumdevices
+    bs3mqfmphones
+    bs3mqfmsmalldevices
+    bs3mqfmtablets
+    bs3mqfmwidescreen
+    
+### Bootstrap 3 Media Queries - Non-Mobile First Method
+
+    bs3mqdesktops
+    bs3mqextrasmalldevices
+    bs3mqiphoneretina
+    bs3mqlargedevices
+    bs3mqmediumdevices
+    bs3mqphones
+    bs3mqsmalldevices
+    bs3mqtablets
+    bs3mqwidescreens
+    
+# Jasny Bootstrap
+---
+Bring Bootstrap's components to life with over a dozen custom jQuery plugins. Easily include them all, or one by one.
+    
+    Author: Arnold Daniels - arnold@jasny.net 
+    URL: http://www.jasny.net/
+    Project: https://github.com/jasny/bootstrap
+### Jasny CDN 
+    bs3jsncdncss
+    bs3jsncdnjs
+
+### Bootstrap Minimum Jasny Templates
+    bs3jsnhtml
+    bs3jsnhtmlnavbar
+    bs3jsnhtmlnavbaroffcanvas
+
+### Container
+Added .container-smooth a container to use the same max-width for all viewport sizes. This means that the container size won't jump at media query breakpoints.
+    bs3jsncontainer
+
+### Buttons 
+Standard button with label
+
+    bs3jsnbtnleft
+
+Standard button with label on the right side
+
+    bs3jsnbtnright
+
+Success button with label
+
+    bs3jsnbtnsuccess
+
+Danger button with label
+
+    bs3jsnbtndanger
+
+### Navmenu
+Body padding required!! 
+The fixed navmenu will overlay your other content, unless you add padding to the left or right of the <body>. Try out your own values or use our snippet below. Tip: By default, the navmenu is 300px wide.
+
+     @media (min-width: 992px) {
+       body {
+         padding-left: 300px;
+      }
+     }
+### Navmenu bs3 commands
+
+#### Media Query 
+    
+    bs3jsnnavmenumediaquery
+
+#### Navmenu
+
+    bs3jsnnavmenu
+
+### Navmenu - Fixed to left or right
+Add either .navmenu-fixed-left or .navmenu-fixed-right.
+
+    bs3jsnnavmenufixedleft
+    bs3jsnnavmenufixedright
+    bs3jsnnavmenuoffcanvasreveal
+    bs3jsnnavmenuoffcanvaspush
+
+### Alerts
+Fixed to top / bottom. Add .alert-fixed-top top stick the alert on top of your page. Use .alert-fixed-bottom for the bottom.
+    bs3jsnalerttop
+    bs3jsnalertbottom
+
+    bs3jsnalertdangertop
+    bs3jsnalertdangerbottom
+    
+    bs3jsnalertwarningtop
+    bs3jsnalertwarningbottom
+    
+    bs3jsnalertinfotop
+    bs3jsnalertinfobottom
+    
+    bs3jsnalertsuccesstop
+    bs3jsnalertsuccessbottom
+
+### Table - ROWLINK
+
+    bs3jsntablerowlink
+
+### Data Entry Mask
+
+    bs3jsninputmask
+    bs3jsnfileselect
+    bs3jsnbtnfileselect
+    bs3jsnuploadimag
+    
+---
+
 To get supplementary files and assets for Animated Portfolio Sample check [Bootstrap Portfolio Project](https://github.com/acbarbosa1964/light-wave-bootstrap-portfolio-sample)
 
 ### Notes
 
-** v1.0.11 - Now with 529 bs3 commands!!! (More info check bs-func.txt and snippet.js files)
+** v0.0.14 - Now with 601 bs3 commands and Bootstrap 3 including media query default sizes and Jasny!!! (More info check bs-func.txt and snippet.js files)
 
 ### Credits
 ---
@@ -632,6 +782,9 @@ To get supplementary files and assets for Animated Portfolio Sample check [Boots
 - Source-code editor used in this project - Brackets - http://www.brackets.io
 - Bootsketch - https://github.com/Yago/Bootsketch
 - Bootswatch - Copyright 2014 Thomas Park - http://bootswatch.com/
+- Jasny Bootstrap - Arnold Daniels - arnold@jasny.net - https://github.com/jasny/bootstrap
+
+Thank you all!!!
 
 ### License
 ---
