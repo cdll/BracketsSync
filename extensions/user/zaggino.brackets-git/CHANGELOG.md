@@ -2,6 +2,22 @@
 
 **If you get an error right after updating just close all Brackets instances and start again. We are aware of this problem.**
 
+## 0.16.3 (07/03/2016)
+* Moved the branch indicator to its own line to prevent overflowing out of the side panel by [José Porto](https://github.com/joseporto)
+
+## 0.16.2 (16/01/2016)
+* Fixed a bug when using Git-FTP by [Matt Bell](https://github.com/mattbell87)
+
+## 0.16.1 (15/01/2016)
+* Fixed a bug, where amend commit was not available without remote repository being set.
+
+## 0.16.0 (13/01/2016)
+* Add counter for commits behind by [Matt Bell](https://github.com/mattbell87)
+* Add sync button to fetch remotes by [Matt Bell](https://github.com/mattbell87)
+
+## 0.15.0 (02/12/2015)
+* Added authentication to Clone dialog by [Matt Bell](https://github.com/mattbell87)
+
 ## 0.14.32 (22/08/2015)
 * Updated terminal launch shortcut to support Git for Windows 2.5, credits to [Jan Pilzer](https://github.com/Hirse)
 

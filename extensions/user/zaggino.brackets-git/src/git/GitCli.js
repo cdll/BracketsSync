@@ -848,6 +848,7 @@ define(function (require, exports) {
     function getFilesFromCommit(hash, isInitial) {
         var args = ["diff", "--no-ext-diff", "--name-only"];
         args = args.concat((isInitial ? EMPTY_TREE : hash + "^") + ".." + hash);
+        args = args.concat("--");
         return git(args).then(function (stdout) {
             return !stdout ? [] : stdout.split("\n");
         });
@@ -881,9 +882,41 @@ define(function (require, exports) {
         });
     }
 
-    function getCommitsAhead() {
-        return git(["rev-list", "HEAD", "--not", "--remotes"]).then(function (stdout) {
-            return !stdout ? [] : stdout.split("\n");
+    function getCommitCountsFallback() {
+        return git(["rev-list", "HEAD", "--not", "--remotes"])
+        .then(function (stdout) {
+            var ahead = stdout ? stdout.split("\n").length : 0;
+            return "-1 " + ahead;
+        })
+        .catch(function (err) {
+            ErrorHandler.logError(err);
+            return "-1 -1";
+        });
+    }
+
+    function getCommitCounts() {
+        var remotes = Preferences.get("defaultRemotes") || {};
+        var remote = remotes[Preferences.get("currentGitRoot")];
+        return getCurrentBranchName()
+        .then(function (branch) {
+            if (!branch || !remote) {
+                return getCommitCountsFallback();
+            }
+            return git(["rev-list", "--left-right", "--count", remote + "/" + branch + "...@{0}", "--"])
+            .catch(function (err) {
+                ErrorHandler.logError(err);
+                return getCommitCountsFallback();
+            })
+            .then(function (stdout) {
+                var matches = /(-?\d+)\s+(-?\d+)/.exec(stdout);
+                return matches ? {
+                    behind: parseInt(matches[1], 10),
+                    ahead: parseInt(matches[2], 10)
+                } : {
+                    behind: -1,
+                    ahead: -1
+                };
+            });
         });
     }
 
@@ -1066,7 +1099,7 @@ define(function (require, exports) {
     exports.rebaseRemote              = rebaseRemote;
     exports.resetRemote               = resetRemote;
     exports.getVersion                = getVersion;
-    exports.getCommitsAhead           = getCommitsAhead;
+    exports.getCommitCounts           = getCommitCounts;
     exports.getLastCommitMessage      = getLastCommitMessage;
     exports.mergeBranch               = mergeBranch;
     exports.getDiffOfAllIndexFiles    = getDiffOfAllIndexFiles;

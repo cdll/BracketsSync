@@ -146,9 +146,16 @@ define(function (require, exports) {
                 .attr("title", !bool ? Strings.AMEND_COMMIT_FORBIDDEN : null);
         };
         toggleAmendCheckbox(false);
-        Git.getCommitsAhead().then(function (commits) {
-            toggleAmendCheckbox(commits.length > 0);
-        });
+
+        Git.getCommitCounts()
+            .then(function (commits) {
+                var hasRemote = $gitPanel.find(".git-selected-remote").data("remote") != null;
+                var hasCommitsAhead = commits.ahead > 0;
+                toggleAmendCheckbox(!hasRemote || hasRemote && hasCommitsAhead);
+            })
+            .catch(function (err) {
+                ErrorHandler.logError(err);
+            });
 
         function getCommitMessageElement() {
             var r = $dialog.find("[name='commit-message']:visible");
@@ -791,6 +798,38 @@ define(function (require, exports) {
         $tableContainer.find(".git-edited-list").toggle(visibleBefore);
     }
 
+    function refreshCommitCounts() {
+        // Find Push and Pull buttons
+        var $pullBtn = $gitPanel.find(".git-pull");
+        var $pushBtn = $gitPanel.find(".git-push");
+        var clearCounts = function () {
+            $pullBtn.children("span").remove();
+            $pushBtn.children("span").remove();
+        };
+
+        // Check if there's a remote, resolve if there's not
+        var remotes = Preferences.get("defaultRemotes") || {};
+        var defaultRemote = remotes[Preferences.get("currentGitRoot")];
+        if (!defaultRemote) {
+            clearCounts();
+            return Promise.resolve();
+        }
+
+        // Get the commit counts and append them to the buttons
+        return Git.getCommitCounts().then(function (commits) {
+            clearCounts();
+            if (commits.behind > 0) {
+                $pullBtn.append($("<span/>").text(" (" + commits.behind + ")"));
+            }
+            if (commits.ahead > 0) {
+                $pushBtn.append($("<span/>").text(" (" + commits.ahead + ")"));
+            }
+        }).catch(function (err) {
+            clearCounts();
+            ErrorHandler.logError(err);
+        });
+    }
+
     function refresh() {
         // set the history panel to false and remove the class that show the button history active when refresh
         $gitPanel.find(".git-history-toggle").removeClass("active").attr("title", Strings.TOOLTIP_SHOW_HISTORY);
@@ -811,16 +850,7 @@ define(function (require, exports) {
             }
         });
 
-        //  Push button
-        var $pushBtn = $gitPanel.find(".git-push");
-        var p2 = Git.getCommitsAhead().then(function (commits) {
-            $pushBtn.children("span").remove();
-            if (commits.length > 0) {
-                $pushBtn.append($("<span/>").text(" (" + commits.length + ")"));
-            }
-        }).catch(function () {
-            $pushBtn.children("span").remove();
-        });
+        var p2 = refreshCommitCounts();
 
         // Clone button
         $gitPanel.find(".git-clone").prop("disabled", false);
@@ -1076,7 +1106,6 @@ define(function (require, exports) {
         var panelHtml = Mustache.render(gitPanelTemplate, {
             enableAdvancedFeatures: Preferences.get("enableAdvancedFeatures"),
             showBashButton: Preferences.get("showBashButton"),
-            showReportBugButton: Preferences.get("showReportBugButton"),
             S: Strings
         });
         var $panelHtml = $(panelHtml);
@@ -1113,6 +1142,7 @@ define(function (require, exports) {
             .on("click", ".authors-file", handleAuthorsFile)
             .on("click", ".git-file-history", EventEmitter.emitFactory(Events.HISTORY_SHOW, "FILE"))
             .on("click", ".git-history-toggle", EventEmitter.emitFactory(Events.HISTORY_SHOW, "GLOBAL"))
+            .on("click", ".git-fetch", EventEmitter.emitFactory(Events.HANDLE_FETCH))
             .on("click", ".git-push", function () {
                 var typeOfRemote = $(this).attr("x-selected-remote-type");
                 if (typeOfRemote === "git") {
@@ -1246,13 +1276,11 @@ define(function (require, exports) {
     });
 
     EventEmitter.on(Events.GIT_REMOTE_AVAILABLE, function () {
-        $gitPanel.find(".git-pull").prop("disabled", false);
-        $gitPanel.find(".git-push").prop("disabled", false);
+        $gitPanel.find(".git-pull, .git-push, .git-fetch").prop("disabled", false);
     });
 
     EventEmitter.on(Events.GIT_REMOTE_NOT_AVAILABLE, function () {
-        $gitPanel.find(".git-pull").prop("disabled", true);
-        $gitPanel.find(".git-push").prop("disabled", true);
+        $gitPanel.find(".git-pull, .git-push, .git-fetch").prop("disabled", true);
     });
 
     EventEmitter.on(Events.GIT_ENABLED, function () {
@@ -1294,6 +1322,23 @@ define(function (require, exports) {
         $gitPanel.find(".git-rebase").toggle(rebaseEnabled);
         $gitPanel.find(".git-merge").toggle(mergeEnabled);
         $gitPanel.find("button.git-commit").toggle(!rebaseEnabled && !mergeEnabled);
+    });
+
+    EventEmitter.on(Events.FETCH_STARTED, function () {
+        $gitPanel.find(".git-fetch")
+            .addClass("btn-loading")
+            .prop("disabled", true);
+    });
+
+    EventEmitter.on(Events.FETCH_COMPLETE, function () {
+        $gitPanel.find(".git-fetch")
+            .removeClass("btn-loading")
+            .prop("disabled", false);
+        refreshCommitCounts();
+    });
+
+    EventEmitter.on(Events.REFRESH_COUNTERS, function () {
+        refreshCommitCounts();
     });
 
     EventEmitter.on(Events.HANDLE_GIT_COMMIT, function () {
